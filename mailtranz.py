@@ -101,6 +101,7 @@ def main():
             'message': DEBUG and str(e) or str(type(e))
         }).encode('utf-8')
         return
+    print 'Status: 303 See other'
     print 'Location: {0}\n'.format(scriptname_map['redirect'])    
 
 if __name__ == '__main__':
