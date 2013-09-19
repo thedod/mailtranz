@@ -1,0 +1,3 @@
+[submodule "py-mustache"]
+	path = py-mustache
+	url = https://github.com/defunkt/pystache.git
