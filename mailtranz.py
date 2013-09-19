@@ -90,8 +90,8 @@ def main():
                 ref = val
 
     subject = '{0}: {1}'.format(scriptname_map['subject'],ref)
-    text = stache.render(stache.load_template('message.txt'),{ 'fields': fields })
-    html = stache.render(stache.load_template('message.html'),{ 'fields': fields })
+    text = stache.render(stache.load_template('message.txt'),{ 'title':scriptname_map['title'],'fields': fields })
+    html = stache.render(stache.load_template('message.html'),{ 'title':scriptname_map['title'],'fields': fields })
     msg = make_multipart_mail({'From':[SMTP_FROM], 'To':SMTP_TOS, 'Subject':subject}, text, html)
     try:
         send(msg, SMTP_HOST, SMTP_PORT, SMTP_KEYFILE, SMTP_CERTFILE, SMTP_USERNAME, SMTP_PASSWORD)

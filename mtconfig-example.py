@@ -15,8 +15,8 @@ MSG_ERROR_NOT_POST = 'שימוש לא נכון במערכת.'
 MSG_ERROR_NO_SSL = 'גישה לא מאובטחת למערכת.'
 
 SCRIPTNAME_MAPS = {
-    'success.cgi': {u'subject':u'[Transaction] Success','ref':'Tempref','redirect':'http://example.com/shop-thankyou'},
-    'fail.cgi': {u'subject':u'[Transaction] Failure','ref':'Tempref',redirect':'http://example.com/shop-error'}
+    'success.cgi': {'subject':'[Transaction] Success','title':'פרטי עיסקה שבוצעה','ref':'Tempref','redirect':'http://example.com/shop-thankyou'},
+    'fail.cgi': {'subject':'[Transaction] Failure','title':'פרטי עיסקה שנכשלה','ref':'Tempref','redirect':'http://example.com/shop-error'}
 }
 
 TRANZFIELDS = [
