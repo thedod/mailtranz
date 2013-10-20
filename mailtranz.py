@@ -82,13 +82,8 @@ def main():
     form = cgi.FieldStorage()
     for fielddef  in TRANZFIELDS:
         val = form.getvalue(fielddef['id'],fielddef.get('default','!!!'))
-        if fielddef.get('hexencoded'):
-            try:
-                    val = val.decode('hex')
-            except:
-                pass
         try:
-                val = unicode(val,'utf-8')
+                val = unicode(val,'windows-1255')
 	except:
             pass
         if val:
