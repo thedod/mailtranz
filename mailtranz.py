@@ -81,17 +81,30 @@ def main():
     ref = '???'
     form = cgi.FieldStorage()
     for fielddef  in TRANZFIELDS:
-        val = unicode(form.getvalue(fielddef['id'],''),'utf-8')
+        val = form.getvalue(fielddef['id'],fielddef.get('default','!!!'))
+        if fielddef.get('hexencoded'):
+            try:
+                    val = val.decode('hex')
+            except:
+                pass
+        try:
+                val = unicode(val,'utf-8')
+	except:
+            pass
         if val:
             field = {'value':val}
             field.update(fielddef)
             fields.append(field)
             if fielddef['id']==scriptname_map['ref']:
                 ref = val
-
+    dbgdict = {'implied_ref':ref}
+    for k in form.keys():
+        dbgdict[k] = form.getvalue(k)
+    import json
+    dbg = json.dumps(dbgdict)
     subject = '{0}: {1}'.format(scriptname_map['subject'],ref)
-    text = stache.render(stache.load_template('message.txt'),{ 'title':scriptname_map['title'],'fields': fields })
-    html = stache.render(stache.load_template('message.html'),{ 'title':scriptname_map['title'],'fields': fields })
+    text = stache.render(stache.load_template('message.txt'),{ 'title':scriptname_map['title'],'fields': fields, 'dbg': dbg })
+    html = stache.render(stache.load_template('message.html'),{ 'title':scriptname_map['title'],'fields': fields, 'dbg': dbg })
     msg = make_multipart_mail({'From':[SMTP_FROM], 'To':SMTP_TOS, 'Subject':subject}, text, html)
     try:
         send(msg, SMTP_HOST, SMTP_PORT, SMTP_KEYFILE, SMTP_CERTFILE, SMTP_USERNAME, SMTP_PASSWORD)

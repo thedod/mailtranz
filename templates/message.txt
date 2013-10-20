@@ -4,3 +4,6 @@
 {{name}}
     {{value}}
 {{/fields}}    
+
+Debug:
+{{dbg}}

@@ -23,7 +23,7 @@ TRANZFIELDS = [
     {u'id':u'Tempref', u'name':u'אסמכתא', u'default':u'???'},
     {u'id':u'Response', u'name':u'קוד תגובה', u'default':u'???'},
     {u'id':u'Confirmation', u'name':u'קוד אישור', u'default':u'???'},
-    {u'id':u'pdesc', u'name':u'מוצר', u'default':u'???'},
+    {u'id':u'pdesc', u'name':u'מוצר', u'default':u'???',u'hexencoded': True},
     {u'id':u'sum', u'name':u'סכום', u'default':u'???'},
     {u'id':u'contact', u'name':u'שם', u'default':u'???', u'rtl':True},
     {u'id':u'email', u'name':u'דואל', u'default':u'???'},
